@@ -6,7 +6,7 @@ const server = Router();
 
 server.post('/pet', async (req, resp) => {
     try {
-        const animalzinho = req.body;
+        const { animalzinho }= req.body;
 
         if (!animalzinho.nome) throw new Error('O nome do Pet é obrigatório');
 
