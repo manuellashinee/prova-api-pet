@@ -4,21 +4,22 @@ import { useState, useEffect } from 'react';
 
 
 export default function Index() {
-    const [pet, setPet] = useState('');
+    const [pet, setPet] = useState([]);
 
     async function verPets() {
-        
         try {
-            const r  = await listarPets(pet);
-            setPet (r);
-}catch(err) {
-    alert.error(err.message);
-}
+        const r = await listarPets();
+        setPet(r);
     }
+    catch(err) {
+        alert.error(err.message);
+    }
+    }  
+    
  useEffect(() =>
 {
-    listarPets();
-},[] )
+    verPets();
+}, [])
     
     return (
         <div>
@@ -31,7 +32,7 @@ export default function Index() {
                     </tr>
                 </thead>
         
-            <tbody>
+                <tbody>
             {pet.map(item =>
                  <tr>
                  <td>{item.id}</td>
